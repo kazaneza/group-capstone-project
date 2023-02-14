@@ -1,40 +1,23 @@
 import './style.css';
-import getData from "./modules/api.js";
 
-const renderData = (data) => {
-    const itemContainer = document.getElementById("item-container");
-  
-    data.forEach(item => {
-      const card = document.createElement("div");
-      card.classList.add("card");
-  
-      const image = document.createElement("img");
-      image.src = item.imageUrl ? item.imageUrl : "https://via.placeholder.com/150";
-      image.alt = item.title;
-      card.appendChild(image);
-  
-      const title = document.createElement("h2");
-      title.textContent = item.title;
-      card.appendChild(title);
-  
-      const commentsButton = document.createElement("button");
-      commentsButton.textContent = "Comments";
-      card.appendChild(commentsButton);
-  
-      const reservationsButton = document.createElement("button");
-      reservationsButton.textContent = "Reservations";
-      card.appendChild(reservationsButton);
-  
-      itemContainer.appendChild(card);
-    });
-  };
-  
-  
-getData()
-  .then(data => {
-    renderData(data);
-  })
-  .catch(error => {
-    console.error(error);
-  });
+fetch('https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr', {
 
+    
+method: 'GET',
+headers: {
+    'X-RapidAPI-Key': 'b3d802e9a6msh4f5f22841b791b6p11e7a8jsnbd6b8d439505',
+    'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+}
+})
+
+.then(response => response.json())
+.then(data => {
+    const list = data.d;
+    
+    list.map((item) => {
+        console.log(item)
+    })
+})
+.catch(err =>{
+    console.error(err)
+} );
