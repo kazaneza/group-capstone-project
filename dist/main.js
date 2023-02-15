@@ -16,7 +16,7 @@
   \*************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"body {\\n  color: aquamarine;\\n}\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://leaderboard-project/./src/style.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://leaderboard-project/./src/style.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -110,13 +110,43 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/commentPopup.js":
+/*!*****************************!*\
+  !*** ./src/commentPopup.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"closeFunc\": () => (/* binding */ closeFunc),\n/* harmony export */   \"commentPopup\": () => (/* binding */ commentPopup),\n/* harmony export */   \"showComments\": () => (/* binding */ showComments)\n/* harmony export */ });\nconst commentPopupContainer = document.querySelector('.comment-popup-container');\nconst closeIcon = document.querySelector('.close-icon');\nconst commentButton = document.querySelector('.comment-btn');\n\nconst showComments = async (\n  id, image, name, language, genres, rating, schedule\n  ) => {\n  commentPopupContainer.innerHTML = `\n  <div class=\"show-${id}\">\n    <img src=\"${image.original}\" class=\"show-image\" alt=\"${name}\">\n    <div class=\"close-icon\">X</div>\n  </div>\n  <h2 class=\"show-title\">${name}</h2>\n  <div class=\"show-specs\">\n    <h3>Language: ${language}</h3>\n    <h3>Genres: ${genres.join(', ')}</h3>\n    <h3>Rating: ${rating.average}</h3>\n    <h3>Schedule: ${schedule.time}</h3>\n    <h3>Network: ${network.name}</h3>\n    <p>${summary}</p>\n  </div>\n  `;\n};\n\nconst commentPopup = () => {\n  commentButton.forEach((item) => {\n    item.addEventListener('click', () => {\n      commentPopupContainer.classList.remove('hidden');\n    })\n  })\n}\n\nconst closeFunc = () => {\n  closeIcon.addEventListener('click', () => {\n    commentPopupContainer.classList.add('hidden');\n  });\n};\n\n\n\n//# sourceURL=webpack://leaderboard-project/./src/commentPopup.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n//# sourceURL=webpack://leaderboard-project/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _commentPopup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./commentPopup.js */ \"./src/commentPopup.js\");\n/* harmony import */ var _modules_api_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/api.js */ \"./src/modules/api.js\");\n/* harmony import */ var _modules_display__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/display */ \"./src/modules/display.js\");\n\n\n\n\n\nconst startApp = async () => {\n  const shows = await (0,_modules_api_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n  (0,_modules_display__WEBPACK_IMPORTED_MODULE_3__[\"default\"])(shows);\n};\n\nstartApp();\n\n\n//# sourceURL=webpack://leaderboard-project/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/api.js":
+/*!****************************!*\
+  !*** ./src/modules/api.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst fetchMovies = () => {\n  const api = 'https://api.tvmaze.com/search/shows?q=prison';\n  const movie = fetch(api)\n    .then((response) => response.json())\n    .then((data) => data);\n  return movie;\n};\n\nconst getMovies = async () => {\n  let array = await fetchMovies();\n  array = array.filter((movie) => movie.show.image !== null);\n  array = array.filter((movie) => movie.show.genres.length !== 0);\n  const moviesArray = [];\n  array.forEach((movie) => {\n    moviesArray.push((movie.show));\n  });\n  return moviesArray;\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getMovies);\n\n//# sourceURL=webpack://leaderboard-project/./src/modules/api.js?");
+
+/***/ }),
+
+/***/ "./src/modules/display.js":
+/*!********************************!*\
+  !*** ./src/modules/display.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst renderShows = (shows) => {\n  const showsContainer = document.getElementById('shows-list');\n  showsContainer.innerHTML = '';\n  shows.forEach((show) => {\n    const listItem = `\n    <li>\n      <img src=\"${show.image.medium}\" alt=\"${show.name} picture\">\n      <div class=\"show-info\">\n        <h3>${show.name}</h3>\n        <div class=\"show-likes\">\n          <i id=\"${show.id}\" class=\"far fa-heart\"></i>\n          <h4>0 likes</h4>\n        </div>\n      </div>\n      <div class=\"show-btn\">\n        <button type=\"button\" data-id=\"${show.id}\"  class=\"btn-comment\">Comments</button>\n        <button type=\"button\" data-id=\"${show.id}\"  class=\"btn-reservation\">Reservation</button>\n      </div>\n    </li>\n    `;\n    showsContainer.innerHTML += listItem;\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (renderShows);\n\n//# sourceURL=webpack://leaderboard-project/./src/modules/display.js?");
 
 /***/ })
 
