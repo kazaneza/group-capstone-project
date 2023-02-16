@@ -1,20 +1,13 @@
-const fetchMovies = () => {
-  const api = 'https://api.tvmaze.com/search/shows?q=prison';
-  const movie = fetch(api)
-    .then((response) => response.json())
-    .then((data) => data);
-  return movie;
+const fetchMovies = async () => {
+  try {
+  const response = await fetch('https://api.tvmaze.com/shows');
+  const show = await response.json();
+  return show.slice(1,21);
+  } 
+  catch (error) {
+    console.error('Error fetching movie data:', error);
+    return [];
+  }
 };
 
-const getMovies = async () => {
-  let array = await fetchMovies();
-  array = array.filter((movie) => movie.show.image !== null);
-  array = array.filter((movie) => movie.show.genres.length !== 0);
-  const moviesArray = [];
-  array.forEach((movie) => {
-    moviesArray.push((movie.show));
-  });
-  return moviesArray;
-};
-
-export default getMovies;
+export default fetchMovies;

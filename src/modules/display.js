@@ -1,25 +1,23 @@
-const renderShows = (shows) => {
-  const showsContainer = document.getElementById('shows-list');
-  showsContainer.innerHTML = '';
-  shows.forEach((show) => {
-    const listItem = `
-    <li>
-      <img src="${show.image.medium}" alt="${show.name} picture">
-      <div class="show-info">
-        <h3>${show.name}</h3>
-        <div class="show-likes">
-          <i id="${show.id}" class="far fa-heart"></i>
-          <h4>0 likes</h4>
+const showContainer = document.querySelector('.show-container');
+
+const displayHomePage = async (shows) => {
+  showContainer.innerHTML = '';
+  shows.forEach((item) => {
+    showContainer.innerHTML += `
+        <div class="show-${item.id} show-poster">
+        <img src=${item.image.medium} alt="movie-image" class="image-pic" />
+        <div class="desc">
+          <p class="movie-title">${item.name}</p>
+          <div class="likes">
+            <i class="fa-sharp fa-regular fa-heart"></i>
+            <p data-id = "${item.id}">5 likes</p>
+          </div>
         </div>
+        <button class="comments-btn" id=${item.id}>Comments</button>
+        <button class="reservation-btn" id=${item.id}>Reservation</button>
       </div>
-      <div class="show-btn">
-        <button type="button" data-id="${show.id}" class="btn-comment">Comments</button>
-        <button type="button" data-id="${show.id}" class="btn-reservation">Reservation</button>
-      </div>
-    </li>
     `;
-    showsContainer.innerHTML += listItem;
   });
 };
 
-export default renderShows;
+export default displayHomePage;

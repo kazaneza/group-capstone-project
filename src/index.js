@@ -1,24 +1,35 @@
 import './style.css';
-// import { showComments, commentPopup, closePopup } from './modules/commentPopup.js';
-import { showComments } from './modules/commentPopup.js';
-import getMovies from './modules/api.js';
-import renderShows from './modules/display';
 
-const startApp = async () => {
-  const shows = await getMovies();
-  renderShows(shows);
-  showComments();
-};
+import displayHomePage from './modules/display';
+import fetchMovies from './modules/api';
+import commentPopup from './modules/commentPopup';
 
-startApp();
+const showContainer = document.querySelector('.show-container');
+const popupContainer = document.querySelector('.comment-popup');
 
-const commentButton = document.querySelector('.btn-comment');
+window.addEventListener('load', async () => {
+  const shows = await fetchMovies();
+  displayHomePage(shows);
+  document.addEventListener('click', async (e) => {
+    const commentButton = e.target.closest('.comments-btn');
+    const closeButton = e.target.closest('.close-icon');
 
-const commentPopup = () => {
-  commentButton.forEach((item) => {
-    item.addEventListener('click', () => {
-      commentPopupContainer.classList.remove('hidden');
-      showComments();
-    })
-  })
-}
+    if (commentButton) {
+      const selectedShow = shows.filter(
+        (it) => it.id.toString() === commentButton.id.toString(),
+      )[0];
+      const {
+        id, image, name, language, genres, rating, schedule,
+      } = selectedShow;
+      showContainer.style.display = 'none';
+      popupContainer.style.display = 'block';
+      commentPopup(id, image, name, language, genres, rating, schedule);
+    }
+
+    if (closeButton) {
+      popupContainer.style.display = 'none';
+      showContainer.style.display = 'grid';
+      displayHomePage(shows);
+    }
+  });
+});
