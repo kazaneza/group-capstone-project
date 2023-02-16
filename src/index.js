@@ -1,6 +1,7 @@
 import './style.css';
 
 import displayHomePage from './modules/display';
+
 import fetchMovies from './modules/api';
 import commentPopup from './modules/commentPopup';
 
