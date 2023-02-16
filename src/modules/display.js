@@ -1,25 +1,34 @@
-const renderShows = (shows) => {
-  const showsContainer = document.getElementById('shows-list');
-  showsContainer.innerHTML = '';
-  shows.forEach((show) => {
-    const listItem = `
-    <li>
-      <img src="${show.image.medium}" alt="${show.name} picture">
-      <div class="show-info">
-        <h3>${show.name}</h3>
-        <div class="show-likes">
-          <i id="${show.id}" class="far fa-heart"></i>
-          <h4>0 likes</h4>
+import fetchMovies from './api'
+
+const showContainer = document.querySelector('.show-container');
+
+
+const displayHomePage = async () => {
+  try {
+    showContainer.innerHTML = '';
+    const shows = await fetchMovies();
+    shows.forEach((show) => {
+      const listShow = document.createElement('div');
+      listShow.classList.add(`show-${show.id}`);
+      listShow.innerHTML = `
+        <img src=${show.image.medium} alt="movie-image" class="image-pic" />
+        <div class="desc">
+          <p class="movie-title">${show.name}</p>
+          <div class="likes">
+            <i class="fa-sharp fa-regular fa-heart"></i>
+            <p data-id="${show.id}">5 likes</p>
+          </div>
         </div>
-      </div>
-      <div class="show-btn">
-        <button type="button" data-id="${show.id}"  class="btn-comment">Comments</button>
-        <button type="button" data-id="${show.id}"  class="btn-reservation">Reservation</button>
-      </div>
-    </li>
-    `;
-    showsContainer.innerHTML += listItem;
-  });
+        <button id="comment-btn" id=${show.id}>Comments</button>
+        <button id="reservation-btn" id=${show.id}>Reservation</button>
+      `;
+      showContainer.appendChild(listShow);
+    });
+    
+  } catch (error) {
+    console.error('Error rendering home page:', error);
+  }
+  
 };
 
-export default renderShows;
+export default displayHomePage;
